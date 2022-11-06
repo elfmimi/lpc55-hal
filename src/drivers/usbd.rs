@@ -230,7 +230,7 @@ where
             }
 
             // ENABLE + CONNECT
-            usb.devcmdstat.modify(|_, w| w.dev_en().set_bit().dcon().set_bit());
+            usb.devcmdstat.modify(|_, w| w.dev_en().set_bit().dcon().set_bit().force_fs().set_bit());
 
             // HERE TOO?
             usb.inten.modify(|r, w| unsafe { w.bits(r.bits() | ((1 << 12) - 1)) } );
